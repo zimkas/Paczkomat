@@ -16,7 +16,7 @@ public class Paczkomat {
 
     public static  List<Paczka> paczki = new ArrayList<>();
 
-    public static void dodajPaczke(Paczka paczka){
+    public void dodajPaczke(Paczka paczka){
         paczki.add(paczka);
     }
     public static void usunPaczke(Paczka paczka){
@@ -58,6 +58,9 @@ public class Paczkomat {
                 ", nazwaPaczkomatu='" + nazwaPaczkomatu + '\'' +
                 ", adresPaczkomatu='" + adresPaczkomatu + '\'' +
                 '}';
+    }
+
+    public void dodajPaczke(String idPaczki, String rozmiarPaczki, Integer wagaPaczki, String odbiorcaPaczki, String nadawcaPaczki, String paczkomatOdbiorcy, String paczkomatNadawcy) {
     }
 }
 

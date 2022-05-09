@@ -8,12 +8,12 @@ public class PaczkomatObsluga {
 
 
     static List<Paczkomat> paczkomaty = new ArrayList<>();
+    static List<Paczka> paczki = new ArrayList<>();
     public static void dodajPaczkomat(Paczkomat paczkomat){
             paczkomaty.add(paczkomat);
-
     }
 
-    public static void usunPaczkomat(Paczkomat paczkomat){
+    public static void usunPaczkomat(String paczkomat){
             paczkomaty.remove(paczkomat);
     }
 
@@ -37,20 +37,60 @@ public class PaczkomatObsluga {
                             "[1]. Dodac paczke\n" +
                             "[2]. Usunac paczke\n" +
                             "[3]. Wyswietlic wszystkie paczki\n" +
-                            "[4]. Dodac paczkomat\n" +
+                            "[4 ok]. Dodac paczkomat\n" +
                             "[5]. Usunac paczkomat\n" +
-                            "[6]. Wyswietlic paczkomaty\n" +
-                            "[0]. Exit program");
+                            "[6 ok]. Wyswietlic paczkomaty\n" +
+                            "[0 ok]. Exit program\n" +
+                            "Chce: ");
 
              wybor = scannerInt.nextInt();
 
             switch (wybor) {
                 case 1:
+                    //trzeba dodac ifa - jesli paczkomat istnieje to continue a jesli nie to trzeba dodac
+                    System.out.println("Podaj ID paczki");
+                    String idPaczki = scanner.nextLine();
+                    System.out.println("Podaj rozmiar paczki");
+                    String rozmiarPaczki = scanner.nextLine();
+                    System.out.println("Podaj wage paczki");
+                    Integer wagaPaczki = scannerInt.nextInt();
+                    System.out.println("Podaj odbiorce paczki");
+                    String odbiorcaPaczki = scanner.nextLine();
+                    System.out.println("Podaj nadawce paczki");
+                    String nadawcaPaczki = scanner.nextLine();
+                    System.out.println("Podaj paczkomat nadawcy paczki");
+                    //tu trzeba dodac ifa na paczkomat
+                    String paczkomatNadawcy = scanner.nextLine();
+                    System.out.println("Podaj paczkomat odbiorcy paczki");
+                    String paczkomatOdbiorcy = scanner.nextLine();
+
+
+                    //wywala z bledem Index 0 out of bounds for length 0
+                    //	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:100)
+                    //	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:106)
+                    //	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:302)
+
+                    paczkomaty.get(0).dodajPaczke(new Paczka(idPaczki, rozmiarPaczki, wagaPaczki, odbiorcaPaczki, nadawcaPaczki, paczkomatOdbiorcy,paczkomatNadawcy));
+                    System.out.println("Twoja paczka została dodana");
+
+
                     break;
                 case 2:
+                    System.out.println("Podaj ID paczki, ktora chcesz usunac");
+                    idPaczki = scanner.nextLine();
+                    String idPaczkiDoUsuniecia = idPaczki;
+
+                    for (Paczka paczka : paczki){
+                        if (idPaczki.equals(idPaczkiDoUsuniecia)){
+                            paczki.remove(paczka);
+                        }
+                    }
+
                     break;
                 case 3:
+                    System.out.println(paczki);
                     break;
+
                 case 4:
                     System.out.println("Podaj ID paczkomatu: ");
                     String idPaczkomatu = scanner.nextLine();
@@ -62,19 +102,27 @@ public class PaczkomatObsluga {
                     System.out.println("Paczkomat zostal dodany");
                     break;
                 case 5:
-//                    System.out.print("Podaj ID paczkomatu, ktory chcesz usunac: ");
-//                    idPaczkomatu = scanner.nextLine();
-//                    System.out.println("Podaj nazwe paczkomatu: ");
-//                    nazwaPaczkomatu = scanner.nextLine();
-//                    System.out.println("Podaj adres paczkomatu: ");
-//                    adresPaczkomatu = scanner.nextLine();
-////                    usunPaczkomat(Paczkomat(idPaczkomatu, nazwaPaczkomatu, adresPaczkomatu));
-//                    System.out.println("Twoj paczkomat zostal usuniety");
+//                    System.out.println("Podaj ID paczkomatu, ktory chcesz usunac: ");
+//                    String idPaczkomat = scanner.nextLine();
+//
+//                    for (Paczkomat paczkomat: paczkomaty){
+//                        if (paczkomat.getIdPaczkomatu().equals(idPaczkomatu)) {usunPaczkomat(paczkomat);
+//                    }}
+//
+//                   if (paczkomaty.contains(idPaczkomatu)){
+//                       usunPaczkomat();
+//                }
+//                    najpierw pobrac Id paczkomatu do usuniecia
+//                        petla, znalezc te konkretna paczke i usunac metoda
+//
+//                    usunPaczkomat(Paczkomat);
+                    System.out.println("Twoj paczkomat zostal usuniety");
                     break;
                 case 6:
                     System.out.println("Aktualnie dostepne paczkomaty to: " + paczkomaty);
                     break;
                 case 0:
+                    System.out.println("Do zobaczenia innym razem");
                     break;
                 default:
                     System.out.println("Wybierz od 0 do 6");
