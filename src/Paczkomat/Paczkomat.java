@@ -19,9 +19,9 @@ public class Paczkomat {
     public void dodajPaczke(Paczka paczka){
         paczki.add(paczka);
     }
-    public static void usunPaczke(Paczka paczka){
-        paczki.remove(paczka);
-    }
+//    public static void usunPaczke(Paczka paczka){
+//        paczki.remove(paczka);
+//    }
 
     public static void wyswietlPaczki(Paczka paczka){
         System.out.println(paczki);
